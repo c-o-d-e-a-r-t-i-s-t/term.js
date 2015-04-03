@@ -2620,6 +2620,20 @@ Terminal.prototype.keyDown = function(ev) {
         } else if (ev.keyCode >= 48 && ev.keyCode <= 57) {
           key = '\x1b' + (ev.keyCode - 48);
         }
+      } else if(this.isMac && ev.altKey){
+          if(ev.keyCode == 78) {
+              if (ev.shiftKey == true) key = '›';
+              else key = '~';
+          } else if(ev.keyCode == 220) {
+              if(ev.shiftKey==true) key = '\\';
+              else key = '|';
+          } else if(ev.keyCode == 219) {
+              if(ev.keyIdentifier == "U+0038") key = "{";
+              else  key = "[";
+          } else if(ev.keyCode == 221) {
+              if(ev.keyIdentifier == "U+0039") key = "}";
+              else  key = "]";
+          }
       }
       break;
   }
